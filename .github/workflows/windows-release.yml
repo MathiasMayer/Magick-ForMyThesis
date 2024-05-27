@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - 'trusted-signing'
     paths:
     - 'configure'
     - 'm4/version.m4'
@@ -158,7 +159,7 @@ jobs:
 
     - name: Sign binaries
       if: github.event_name != 'pull_request'
-      uses: azure/trusted-signing-action@v0.3.19
+      uses: azure/trusted-signing-action@dev/japarson/cache
       with:
         endpoint: https://eus.codesigning.azure.net/
         trusted-signing-account-name: ImageMagick
@@ -176,7 +177,7 @@ jobs:
 
     - name: Sign installer
       if: github.event_name != 'pull_request'
-      uses: azure/trusted-signing-action@v0.3.19
+      uses: azure/trusted-signing-action@dev/japarson/cache
       with:
         endpoint: https://eus.codesigning.azure.net/
         trusted-signing-account-name: ImageMagick
@@ -337,7 +338,7 @@ jobs:
 
     - name: Sign executables
       if: github.event_name != 'pull_request'
-      uses: azure/trusted-signing-action@v0.3.19
+      uses: azure/trusted-signing-action@dev/japarson/cache
       with:
         endpoint: https://eus.codesigning.azure.net/
         trusted-signing-account-name: ImageMagick
